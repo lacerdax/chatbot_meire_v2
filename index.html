@@ -1683,13 +1683,12 @@
                             align-items: center;
                           }
                           #meire_chatbot .botao-chat {
-                            background-color: transparent;
-                            color: #fff;
+                            background-color: transparent !important;
+                            background: transparent;
+                            box-shadow: none;
                             border: none;
-                            border-radius: 50%;
                             width: 90px;
                             height: 90px;
-                            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
                             cursor: pointer;
                             display: flex;
                             align-items: center;
@@ -1703,9 +1702,6 @@
                             border-radius: 50%;
                             display: block;
                             top: 100px;
-                          }
-                          #meire_chatbot .botao-chat:focus {
-                            outline: 3px solid rgba(19, 81, 180, 0.35);
                           }
 
                           /* Balão de fala (convite) */
@@ -1754,7 +1750,7 @@
                           #meire_chatbot .janela-chat {
                             position: fixed !important;
                             bottom: calc(
-                              116px + env(safe-area-inset-bottom, 0px)
+                              140px + env(safe-area-inset-bottom, 0px)
                             );
                             right: calc(24px + env(safe-area-inset-right, 0px));
                             width: 520px;
