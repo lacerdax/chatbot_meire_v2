@@ -1667,531 +1667,461 @@
                       class="tile tile-default"
                       id="d56a9e93-cdff-4559-ab2a-573386c07e5a"
                     >
-                      <div id="meire_chatbot">
-                        <style>
-                          /* Escopo para evitar conflito em outras páginas */
-                          #meire_chatbot .botao-chat-flutuante {
-                            position: fixed !important;
-                            bottom: calc(
-                              20px + env(safe-area-inset-bottom, 0px)
-                            );
-                            right: calc(
-                              100px + env(safe-area-inset-right, 0px)
-                            );
-                            z-index: 2147483647 !important;
-                            display: flex;
-                            align-items: center;
-                          }
-                          #meire_chatbot .botao-chat {
-                            background-color: transparent !important;
-                            background: transparent;
-                            box-shadow: none;
-                            border: none;
-                            width: 90px;
-                            height: 90px;
-                            cursor: pointer;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            padding: 0;
-                          }
-                          #meire_chatbot .botao-chat img {
-                            width: 100%;
-                            display: block;
-                            top: 100px;
-                          }
+<div id="meire_chatbot">
+  <style>
+    /* Escopo para evitar conflito em outras páginas */
+    #meire_chatbot .botao-chat-flutuante {
+      position: fixed !important;
+      bottom: calc(-55px + env(safe-area-inset-bottom, 0px));
+      right: calc(100px + env(safe-area-inset-right, 0px));
+      z-index: 2147483647 !important;
+      display: flex;
+      align-items: center;
+    }
+    #meire_chatbot .botao-chat {
+      background-color: transparent !important;
+      background: transparent;
+      box-shadow: none;
+      border: none;
+      width: 240px;
+      height: 240px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      margin: 0;
+    }
+    #meire_chatbot .botao-chat img {
+      width: 100%;
+      display: block;
+      top: 100px;
+    }
 
-                          /* Balão de fala (convite) */
-                          #meire_chatbot .balao-convite {
-                            position: relative;
-                            background-color: #fff;
-                            color: #1351b4;
-                            padding: 10px 14px;
-                            border-radius: 16px;
-                            border: 2px solid #1351b4;
-                            margin-right: 10px;
-                            margin-bottom: 40px;
-                            white-space: nowrap;
-                            font-family: system-ui, -apple-system, Segoe UI,
-                              Roboto, Arial, sans-serif;
-                            font-size: 14px;
-                            opacity: 0;
-                            transition: opacity 0.5s ease;
-                            z-index: 2147483647 !important;
-                          }
-                          #meire_chatbot .balao-convite.visivel {
-                            opacity: 1;
-                          }
-                          #meire_chatbot .balao-convite::after {
-                            content: '';
-                            position: absolute;
-                            top: 50%;
-                            right: -10px;
-                            transform: translateY(-50%);
-                            border-top: 6px solid transparent;
-                            border-bottom: 6px solid transparent;
-                            border-left: 10px solid #fff;
-                          }
-                          #meire_chatbot .balao-convite::before {
-                            content: '';
-                            position: absolute;
-                            top: 50%;
-                            right: -12px;
-                            transform: translateY(-50%);
-                            border-top: 8px solid transparent;
-                            border-bottom: 8px solid transparent;
-                            border-left: 12px solid #1351b4;
-                          }
+    /* Balão de fala (convite) */
+    #meire_chatbot .balao-convite {
+      position: relative;
+      background-color: #fff;
+      color: #1351b4;
+      padding: 10px 14px;
+      border-radius: 16px;
+      border: 2px solid #1351b4;
+      margin-right: -35px;
+      margin-bottom: 40px;
+      white-space: nowrap;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      z-index: 2147483647 !important;
+    }
+    #meire_chatbot .balao-convite.visivel {
+      opacity: 1;
+    }
+    #meire_chatbot .balao-convite::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -10px;
+      transform: translateY(-50%);
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;
+      border-left: 10px solid #fff;
+    }
+    #meire_chatbot .balao-convite::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -12px;
+      transform: translateY(-50%);
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-left: 12px solid #1351b4;
+    }
 
-                          /* Janela do chat */
-                          #meire_chatbot .janela-chat {
-                            position: fixed !important;
-                            bottom: calc(
-                              140px + env(safe-area-inset-bottom, 0px)
-                            );
-                            right: calc(70px + env(safe-area-inset-right, 0px));
-                            width: 520px;
-                            height: 70vh;
-                            background: #fff;
-                            border: 2px solid #1351b4;
-                            border-radius: 10px;
-                            overflow: hidden;
-                            z-index: 2147483646 !important; /* ligeiramente abaixo do botão */
-                            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-                            display: none;
-                            min-width: 300px;
-                            min-height: 240px;
-                            flex-direction: column;
-                            position: fixed;
-                          }
-                          #meire_chatbot .janela-chat.ativa {
-                            display: flex;
-                          }
+    /* Janela do chat */
+    #meire_chatbot .janela-chat {
+      position: fixed !important;
+      bottom: calc(150px + env(safe-area-inset-bottom, 0px));
+      right: calc(70px + env(safe-area-inset-right, 0px));
+      width: 520px;
+      height: 70vh;
+      background: #fff;
+      border: 2px solid #1351b4;
+      border-radius: 10px;
+      overflow: hidden;
+      z-index: 2147483646 !important; /* ligeiramente abaixo do botão */
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      display: none;
+      min-width: 300px;
+      min-height: 240px;
+      flex-direction: column;
+      position: fixed;
+    }
+    #meire_chatbot .janela-chat.ativa {
+      display: flex;
+    }
 
-                          #meire_chatbot .janela-chat iframe {
-                            width: 100%;
-                            height: 100%;
-                            border: 0;
-                            flex: 1;
-                            display: block;
-                          }
+    #meire_chatbot .janela-chat iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      flex: 1;
+      display: block;
+    }
 
-                          /* Botão fechar sutil dentro do modal */
-                          #meire_chatbot .botao-fechar-sutil {
-                            position: absolute;
-                            top: 8px;
-                            right: 8px;
-                            width: 32px;
-                            height: 32px;
-                            border: none;
-                            border-radius: 50%;
-                            background: transparent;
-                            color: #fff;
-                            display: inline-flex;
-                            align-items: center;
-                            justify-content: center;
-                            cursor: pointer;
-                            z-index: 2147483647 !important;
-                            pointer-events: auto;
-                          }
+    /* Botão fechar sutil dentro do modal */
+    #meire_chatbot .botao-fechar-sutil {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 32px;
+      height: 32px;
+      border: none;
+      border-radius: 50%;
+      background: transparent;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2147483647 !important;
+      pointer-events: auto;
+    }
 
-                          /* Bordas para redimensionar */
-                          #meire_chatbot .borda-redimensionar {
-                            position: absolute;
-                            z-index: 10;
-                          }
-                          #meire_chatbot .borda-redimensionar.topo,
-                          #meire_chatbot .borda-redimensionar.baixo {
-                            height: 6px;
-                            left: 0;
-                            right: 0;
-                            cursor: ns-resize;
-                          }
-                          #meire_chatbot .borda-redimensionar.topo {
-                            top: 0;
-                          }
-                          #meire_chatbot .borda-redimensionar.baixo {
-                            bottom: 0;
-                          }
-                          #meire_chatbot .borda-redimensionar.esquerda,
-                          #meire_chatbot .borda-redimensionar.direita {
-                            width: 6px;
-                            top: 0;
-                            bottom: 0;
-                            cursor: ew-resize;
-                          }
-                          #meire_chatbot .borda-redimensionar.esquerda {
-                            left: 0;
-                          }
-                          #meire_chatbot .borda-redimensionar.direita {
-                            right: 0;
-                          }
-                          #meire_chatbot
-                            .borda-redimensionar.canto-topo-esquerda,
-                          #meire_chatbot
-                            .borda-redimensionar.canto-topo-direita,
-                          #meire_chatbot
-                            .borda-redimensionar.canto-baixo-esquerda,
-                          #meire_chatbot
-                            .borda-redimensionar.canto-baixo-direita {
-                            width: 10px;
-                            height: 10px;
-                          }
-                          #meire_chatbot
-                            .borda-redimensionar.canto-topo-esquerda {
-                            top: 0;
-                            left: 0;
-                            cursor: nwse-resize;
-                          }
-                          #meire_chatbot
-                            .borda-redimensionar.canto-topo-direita {
-                            top: 0;
-                            right: 0;
-                            cursor: nesw-resize;
-                          }
-                          #meire_chatbot
-                            .borda-redimensionar.canto-baixo-esquerda {
-                            bottom: 0;
-                            left: 0;
-                            cursor: nesw-resize;
-                          }
-                          #meire_chatbot
-                            .borda-redimensionar.canto-baixo-direita {
-                            bottom: 0;
-                            right: 0;
-                            cursor: nwse-resize;
-                          }
+    /* Bordas para redimensionar */
+    #meire_chatbot .borda-redimensionar {
+      position: absolute;
+      z-index: 10;
+    }
+    #meire_chatbot .borda-redimensionar.topo,
+    #meire_chatbot .borda-redimensionar.baixo {
+      height: 6px;
+      left: 0;
+      right: 0;
+      cursor: ns-resize;
+    }
+    #meire_chatbot .borda-redimensionar.topo {
+      top: 0;
+    }
+    #meire_chatbot .borda-redimensionar.baixo {
+      bottom: 0;
+    }
+    #meire_chatbot .borda-redimensionar.esquerda,
+    #meire_chatbot .borda-redimensionar.direita {
+      width: 6px;
+      top: 0;
+      bottom: 0;
+      cursor: ew-resize;
+    }
+    #meire_chatbot .borda-redimensionar.esquerda {
+      left: 0;
+    }
+    #meire_chatbot .borda-redimensionar.direita {
+      right: 0;
+    }
+    #meire_chatbot .borda-redimensionar.canto-topo-esquerda,
+    #meire_chatbot .borda-redimensionar.canto-topo-direita,
+    #meire_chatbot .borda-redimensionar.canto-baixo-esquerda,
+    #meire_chatbot .borda-redimensionar.canto-baixo-direita {
+      width: 10px;
+      height: 10px;
+    }
+    #meire_chatbot .borda-redimensionar.canto-topo-esquerda {
+      top: 0;
+      left: 0;
+      cursor: nwse-resize;
+    }
+    #meire_chatbot .borda-redimensionar.canto-topo-direita {
+      top: 0;
+      right: 0;
+      cursor: nesw-resize;
+    }
+    #meire_chatbot .borda-redimensionar.canto-baixo-esquerda {
+      bottom: 0;
+      left: 0;
+      cursor: nesw-resize;
+    }
+    #meire_chatbot .borda-redimensionar.canto-baixo-direita {
+      bottom: 0;
+      right: 0;
+      cursor: nwse-resize;
+    }
 
-                          /* Responsivo (mobile) */
-                          @media (max-width: 600px) {
-                            #meire_chatbot .botao-chat {
-                              width: 80px;
-                              height: 80px;
-                            }
-                            #meire_chatbot .janela-chat {
-                              width: 90vw; /* ocupar 90% da largura */
-                              left: 5vw; /* centralizar (5% de cada lado) */
-                              right: auto; /* ignorar right no mobile */
-                              height: 92vh;
-                              bottom: 0;
-                              top: auto;
-                              border-radius: 12px; /* borda arredondada uniforme */
-                              border-width: 0;
-                            }
-                            #meire_chatbot.chat-aberto .botao-chat-flutuante {
-                              display: none;
-                            } /* esconder botão quando aberto */
-                            #meire_chatbot .janela-chat iframe {
-                              height: 100%;
-                            }
-                            #meire_chatbot .borda-redimensionar {
-                              display: none;
-                            }
-                            #meire_chatbot .balao-convite {
-                              display: none;
-                            }
-                          }
-                        </style>
+    /* Responsivo (mobile) */
+    @media (max-width: 600px) {
+      #meire_chatbot .botao-chat {
+        width: 80px;
+        height: 80px;
+      }
+      #meire_chatbot .janela-chat {
+        width: 90vw; /* ocupar 90% da largura */
+        left: 5vw; /* centralizar (5% de cada lado) */
+        right: auto; /* ignorar right no mobile */
+        height: 92vh;
+        bottom: 0;
+        top: auto;
+        border-radius: 12px; /* borda arredondada uniforme */
+        border-width: 0;
+      }
+      #meire_chatbot.chat-aberto .botao-chat-flutuante {
+        display: none;
+      } /* esconder botão quando aberto */
+      #meire_chatbot .janela-chat iframe {
+        height: 100%;
+      }
+      #meire_chatbot .borda-redimensionar {
+        display: none;
+      }
+      #meire_chatbot .balao-convite {
+        display: none;
+      }
+    }
+  </style>
 
-                        <div class="botao-chat-flutuante">
-                          <div class="balao-convite" id="balaoConvite">
-                            Dúvidas sobre MEI? Eu te ajudo!
-                          </div>
-                          <button
-                            class="botao-chat"
-                            id="botaoAbrirChat"
-                            aria-label="Abrir chatbot"
-                            aria-controls="janelaChat"
-                            aria-expanded="false"
-                          >
-                            <img
-                              src="https://i.postimg.cc/VLzKxqd3/Mstd9u8-(1).png"
-                              alt="Abrir Meire"
-                            />
-                          </button>
-                        </div>
+  <div class="botao-chat-flutuante">
+    <div class="balao-convite" id="balaoConvite">
+      Dúvidas sobre MEI? Eu te ajudo!
+    </div>
+    <button
+      class="botao-chat"
+      id="botaoAbrirChat"
+      aria-label="Abrir chatbot"
+      aria-controls="janelaChat"
+      aria-expanded="false"
+    >
+      <img
+        src="https://i.postimg.cc/gJFyFpjM/Design-sem-nome-(1).gif"
+        alt="Abrir Meire"
+      />
+    </button>
+  </div>
 
-                        <div
-                          class="janela-chat"
-                          id="janelaChat"
-                          role="dialog"
-                          aria-modal="true"
-                          aria-label="Chatbot"
-                        >
-                          <button
-                            id="botaoFecharSutil"
-                            class="botao-fechar-sutil"
-                            aria-label="Fechar chatbot"
-                            tabindex="0"
-                          >
-                            X
-                          </button>
-                          <div id="containerIframeChat" style="flex: 1"></div>
+  <div
+    class="janela-chat"
+    id="janelaChat"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Chatbot"
+  >
+    <button
+      id="botaoFecharSutil"
+      class="botao-fechar-sutil"
+      aria-label="Fechar chatbot"
+      tabindex="0"
+    >
+      X
+    </button>
+    <div id="containerIframeChat" style="flex: 1"></div>
 
-                          <div
-                            class="borda-redimensionar topo"
-                            data-resize="topo"
-                          ></div>
-                          <div
-                            class="borda-redimensionar baixo"
-                            data-resize="baixo"
-                          ></div>
-                          <div
-                            class="borda-redimensionar esquerda"
-                            data-resize="esquerda"
-                          ></div>
-                          <div
-                            class="borda-redimensionar direita"
-                            data-resize="direita"
-                          ></div>
-                          <div
-                            class="borda-redimensionar canto-topo-esquerda"
-                            data-resize="canto-topo-esquerda"
-                          ></div>
-                          <div
-                            class="borda-redimensionar canto-topo-direita"
-                            data-resize="canto-topo-direita"
-                          ></div>
-                          <div
-                            class="borda-redimensionar canto-baixo-esquerda"
-                            data-resize="canto-baixo-esquerda"
-                          ></div>
-                          <div
-                            class="borda-redimensionar canto-baixo-direita"
-                            data-resize="canto-baixo-direita"
-                          ></div>
-                        </div>
+    <div class="borda-redimensionar topo" data-resize="topo"></div>
+    <div class="borda-redimensionar baixo" data-resize="baixo"></div>
+    <div class="borda-redimensionar esquerda" data-resize="esquerda"></div>
+    <div class="borda-redimensionar direita" data-resize="direita"></div>
+    <div
+      class="borda-redimensionar canto-topo-esquerda"
+      data-resize="canto-topo-esquerda"
+    ></div>
+    <div
+      class="borda-redimensionar canto-topo-direita"
+      data-resize="canto-topo-direita"
+    ></div>
+    <div
+      class="borda-redimensionar canto-baixo-esquerda"
+      data-resize="canto-baixo-esquerda"
+    ></div>
+    <div
+      class="borda-redimensionar canto-baixo-direita"
+      data-resize="canto-baixo-direita"
+    ></div>
+  </div>
 
-                        <script>
-                          (function () {
-                            const raiz =
-                              document.getElementById('meire_chatbot');
-                            // Garante que o widget fique fora de stacking contexts herdados do tema (reposiciona no <body>)
-                            if (raiz && raiz.parentNode !== document.body) {
-                              try {
-                                document.body.appendChild(raiz);
-                                raiz.style.position = 'relative';
-                                raiz.style.zIndex = '2147483647';
-                              } catch (e) {}
-                            }
-                            // Ensure responsive viewport if the page lacks the meta tag (fixes tiny rendering on iOS/Safari)
-                            try {
-                              var metaViewport = document.querySelector(
-                                'meta[name="viewport"]'
-                              );
-                              if (!metaViewport) {
-                                metaViewport = document.createElement('meta');
-                                metaViewport.name = 'viewport';
-                                metaViewport.content =
-                                  'width=device-width, initial-scale=1, viewport-fit=cover';
-                                if (document.head)
-                                  document.head.appendChild(metaViewport);
-                              }
-                            } catch (e) {}
-                            const botaoAbrir =
-                              document.getElementById('botaoAbrirChat');
-                            const janelaChat =
-                              document.getElementById('janelaChat');
-                            const containerIframe = document.getElementById(
-                              'containerIframeChat'
-                            );
-                            const botaoFecharSutil =
-                              document.getElementById('botaoFecharSutil');
-                            const balaoConvite =
-                              document.getElementById('balaoConvite');
-                            const urlIframe =
-                              'https://copilotstudio.microsoft.com/environments/8513eed8-8bc8-e9e7-95e4-d66ba2a8c6e2/bots/crefe_meIre/webchat?__version__=2';
-                            let iframeCarregado = false;
-                            let timeoutReaparecerBalao = null;
-                            const atrasoReaparecerMs = 3000;
+  <script>
+    (function () {
+      const raiz = document.getElementById('meire_chatbot');
+      // Garante que o widget fique fora de stacking contexts herdados do tema (reposiciona no <body>)
+      if (raiz && raiz.parentNode !== document.body) {
+        try {
+          document.body.appendChild(raiz);
+          raiz.style.position = 'relative';
+          raiz.style.zIndex = '2147483647';
+        } catch (e) {}
+      }
+      // Ensure responsive viewport if the page lacks the meta tag (fixes tiny rendering on iOS/Safari)
+      try {
+        var metaViewport = document.querySelector('meta[name="viewport"]');
+        if (!metaViewport) {
+          metaViewport = document.createElement('meta');
+          metaViewport.name = 'viewport';
+          metaViewport.content =
+            'width=device-width, initial-scale=1, viewport-fit=cover';
+          if (document.head) document.head.appendChild(metaViewport);
+        }
+      } catch (e) {}
+      const botaoAbrir = document.getElementById('botaoAbrirChat');
+      const janelaChat = document.getElementById('janelaChat');
+      const containerIframe = document.getElementById('containerIframeChat');
+      const botaoFecharSutil = document.getElementById('botaoFecharSutil');
+      const balaoConvite = document.getElementById('balaoConvite');
+      const urlIframe =
+        'https://copilotstudio.microsoft.com/environments/8513eed8-8bc8-e9e7-95e4-d66ba2a8c6e2/bots/crefe_meIre/webchat?__version__=2';
+      let iframeCarregado = false;
+      let timeoutReaparecerBalao = null;
+      const atrasoReaparecerMs = 3000;
 
-                            // Exibir o balão após 1s e alternar visibilidade
-                            setTimeout(function () {
-                              if (balaoConvite) {
-                                balaoConvite.classList.add('visivel');
-                                let mostrando = true;
-                                function alternarBalao() {
-                                  if (
-                                    !balaoConvite ||
-                                    balaoConvite.style.display === 'none'
-                                  )
-                                    return;
-                                  if (mostrando) {
-                                    balaoConvite.classList.remove('visivel');
-                                    mostrando = false;
-                                    setTimeout(alternarBalao, 6000);
-                                  } else {
-                                    balaoConvite.classList.add('visivel');
-                                    mostrando = true;
-                                    setTimeout(alternarBalao, 4000);
-                                  }
-                                }
-                                setTimeout(alternarBalao, 4000);
-                              }
-                            }, 1000);
+      // Exibir o balão após 1s e alternar visibilidade
+      setTimeout(function () {
+        if (balaoConvite) {
+          balaoConvite.classList.add('visivel');
+          let mostrando = true;
+          function alternarBalao() {
+            if (!balaoConvite || balaoConvite.style.display === 'none') return;
+            if (mostrando) {
+              balaoConvite.classList.remove('visivel');
+              mostrando = false;
+              setTimeout(alternarBalao, 6000);
+            } else {
+              balaoConvite.classList.add('visivel');
+              mostrando = true;
+              setTimeout(alternarBalao, 4000);
+            }
+          }
+          setTimeout(alternarBalao, 4000);
+        }
+      }, 1000);
 
-                            function abrirJanela() {
-                              janelaChat.classList.add('ativa');
-                              raiz.classList.add('chat-aberto');
-                              botaoAbrir.setAttribute('aria-expanded', 'true');
-                              if (balaoConvite) {
-                                balaoConvite.style.display = 'none';
-                                balaoConvite.classList.remove('visivel');
-                              }
-                              if (timeoutReaparecerBalao) {
-                                clearTimeout(timeoutReaparecerBalao);
-                                timeoutReaparecerBalao = null;
-                              }
-                              if (!iframeCarregado) {
-                                const iframe = document.createElement('iframe');
-                                iframe.src = urlIframe;
-                                iframe.title = 'Copilot Studio Webchat';
-                                iframe.allow =
-                                  'clipboard-read; clipboard-write; microphone; camera';
-                                containerIframe.appendChild(iframe);
-                                iframeCarregado = true;
-                              }
-                            }
+      function abrirJanela() {
+        janelaChat.classList.add('ativa');
+        raiz.classList.add('chat-aberto');
+        botaoAbrir.setAttribute('aria-expanded', 'true');
+        if (balaoConvite) {
+          balaoConvite.style.display = 'none';
+          balaoConvite.classList.remove('visivel');
+        }
+        if (timeoutReaparecerBalao) {
+          clearTimeout(timeoutReaparecerBalao);
+          timeoutReaparecerBalao = null;
+        }
+        if (!iframeCarregado) {
+          const iframe = document.createElement('iframe');
+          iframe.src = urlIframe;
+          iframe.title = 'Copilot Studio Webchat';
+          iframe.allow = 'clipboard-read; clipboard-write; microphone; camera';
+          containerIframe.appendChild(iframe);
+          iframeCarregado = true;
+        }
+      }
 
-                            function fecharJanela() {
-                              janelaChat.classList.remove('ativa');
-                              raiz.classList.remove('chat-aberto');
-                              botaoAbrir.setAttribute('aria-expanded', 'false');
-                              if (balaoConvite) {
-                                balaoConvite.classList.remove('visivel');
-                                balaoConvite.style.display = 'none';
-                                timeoutReaparecerBalao = setTimeout(
-                                  function () {
-                                    balaoConvite.style.display = '';
-                                    balaoConvite.classList.add('visivel');
-                                  },
-                                  atrasoReaparecerMs
-                                );
-                              }
-                            }
+      function fecharJanela() {
+        janelaChat.classList.remove('ativa');
+        raiz.classList.remove('chat-aberto');
+        botaoAbrir.setAttribute('aria-expanded', 'false');
+        if (balaoConvite) {
+          balaoConvite.classList.remove('visivel');
+          balaoConvite.style.display = 'none';
+          timeoutReaparecerBalao = setTimeout(function () {
+            balaoConvite.style.display = '';
+            balaoConvite.classList.add('visivel');
+          }, atrasoReaparecerMs);
+        }
+      }
 
-                            // Toggle no botão principal: abre/fecha
-                            function onAbrir(e) {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              janelaChat.classList.contains('ativa')
-                                ? fecharJanela()
-                                : abrirJanela();
-                            }
-                            ['click', 'touchend'].forEach(function (evt) {
-                              botaoAbrir.addEventListener(evt, onAbrir, {
-                                passive: false,
-                              });
-                            });
+      // Toggle no botão principal: abre/fecha
+      function onAbrir(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        janelaChat.classList.contains('ativa') ? fecharJanela() : abrirJanela();
+      }
+      ['click', 'touchend'].forEach(function (evt) {
+        botaoAbrir.addEventListener(evt, onAbrir, {
+          passive: false,
+        });
+      });
 
-                            // Fechar pelo botão sutil (inclui toque)
-                            function onFechar(e) {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              fecharJanela();
-                            }
-                            ['click', 'touchend'].forEach(function (evt) {
-                              botaoFecharSutil.addEventListener(evt, onFechar, {
-                                passive: false,
-                              });
-                            });
+      // Fechar pelo botão sutil (inclui toque)
+      function onFechar(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        fecharJanela();
+      }
+      ['click', 'touchend'].forEach(function (evt) {
+        botaoFecharSutil.addEventListener(evt, onFechar, {
+          passive: false,
+        });
+      });
 
-                            // Tecla ESC fecha
-                            document.addEventListener('keydown', function (e) {
-                              if (e.key === 'Escape') fecharJanela();
-                            });
+      // Tecla ESC fecha
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') fecharJanela();
+      });
 
-                            // Delegação de clique como fallback
-                            raiz.addEventListener('click', function (e) {
-                              const alvo = e.target;
-                              if (!alvo) return;
-                              if (
-                                alvo.id === 'botaoFecharSutil' ||
-                                (alvo.closest &&
-                                  alvo.closest('#botaoFecharSutil'))
-                              ) {
-                                fecharJanela();
-                              }
-                            });
+      // Delegação de clique como fallback
+      raiz.addEventListener('click', function (e) {
+        const alvo = e.target;
+        if (!alvo) return;
+        if (
+          alvo.id === 'botaoFecharSutil' ||
+          (alvo.closest && alvo.closest('#botaoFecharSutil'))
+        ) {
+          fecharJanela();
+        }
+      });
 
-                            // Redimensionar (resize)
-                            let redimensionando = false,
-                              direcaoRedimensionar = '';
-                            let inicioX,
-                              inicioY,
-                              larguraInicial,
-                              alturaInicial,
-                              topoInicial,
-                              esquerdaInicial;
-                            document
-                              .querySelectorAll(
-                                '#meire_chatbot .borda-redimensionar'
-                              )
-                              .forEach(function (borda) {
-                                borda.addEventListener(
-                                  'mousedown',
-                                  function (e) {
-                                    e.preventDefault();
-                                    redimensionando = true;
-                                    direcaoRedimensionar =
-                                      e.target.dataset.resize;
-                                    inicioX = e.clientX;
-                                    inicioY = e.clientY;
-                                    const rect =
-                                      janelaChat.getBoundingClientRect();
-                                    larguraInicial = rect.width;
-                                    alturaInicial = rect.height;
-                                    topoInicial = rect.top;
-                                    esquerdaInicial = rect.left;
-                                    document.addEventListener(
-                                      'mousemove',
-                                      redimensionarJanela
-                                    );
-                                    document.addEventListener(
-                                      'mouseup',
-                                      pararRedimensionar
-                                    );
-                                  }
-                                );
-                              });
-                            function redimensionarJanela(e) {
-                              if (!redimensionando) return;
-                              const dx = e.clientX - inicioX;
-                              const dy = e.clientY - inicioY;
-                              if (direcaoRedimensionar.includes('direita')) {
-                                janelaChat.style.width =
-                                  larguraInicial + dx + 'px';
-                              }
-                              if (direcaoRedimensionar.includes('esquerda')) {
-                                janelaChat.style.width =
-                                  larguraInicial - dx + 'px';
-                                janelaChat.style.left =
-                                  esquerdaInicial + dx + 'px';
-                              }
-                              if (direcaoRedimensionar.includes('baixo')) {
-                                janelaChat.style.height =
-                                  alturaInicial + dy + 'px';
-                              }
-                              if (direcaoRedimensionar.includes('topo')) {
-                                janelaChat.style.height =
-                                  alturaInicial - dy + 'px';
-                                janelaChat.style.top = topoInicial + dy + 'px';
-                              }
-                            }
-                            function pararRedimensionar() {
-                              redimensionando = false;
-                              document.removeEventListener(
-                                'mousemove',
-                                redimensionarJanela
-                              );
-                              document.removeEventListener(
-                                'mouseup',
-                                pararRedimensionar
-                              );
-                            }
-                          })();
-                        </script>
-                      </div>
+      // Redimensionar (resize)
+      let redimensionando = false,
+        direcaoRedimensionar = '';
+      let inicioX,
+        inicioY,
+        larguraInicial,
+        alturaInicial,
+        topoInicial,
+        esquerdaInicial;
+      document
+        .querySelectorAll('#meire_chatbot .borda-redimensionar')
+        .forEach(function (borda) {
+          borda.addEventListener('mousedown', function (e) {
+            e.preventDefault();
+            redimensionando = true;
+            direcaoRedimensionar = e.target.dataset.resize;
+            inicioX = e.clientX;
+            inicioY = e.clientY;
+            const rect = janelaChat.getBoundingClientRect();
+            larguraInicial = rect.width;
+            alturaInicial = rect.height;
+            topoInicial = rect.top;
+            esquerdaInicial = rect.left;
+            document.addEventListener('mousemove', redimensionarJanela);
+            document.addEventListener('mouseup', pararRedimensionar);
+          });
+        });
+      function redimensionarJanela(e) {
+        if (!redimensionando) return;
+        const dx = e.clientX - inicioX;
+        const dy = e.clientY - inicioY;
+        if (direcaoRedimensionar.includes('direita')) {
+          janelaChat.style.width = larguraInicial + dx + 'px';
+        }
+        if (direcaoRedimensionar.includes('esquerda')) {
+          janelaChat.style.width = larguraInicial - dx + 'px';
+          janelaChat.style.left = esquerdaInicial + dx + 'px';
+        }
+        if (direcaoRedimensionar.includes('baixo')) {
+          janelaChat.style.height = alturaInicial + dy + 'px';
+        }
+        if (direcaoRedimensionar.includes('topo')) {
+          janelaChat.style.height = alturaInicial - dy + 'px';
+          janelaChat.style.top = topoInicial + dy + 'px';
+        }
+      }
+      function pararRedimensionar() {
+        redimensionando = false;
+        document.removeEventListener('mousemove', redimensionarJanela);
+        document.removeEventListener('mouseup', pararRedimensionar);
+      }
+    })();
+  </script>
+</div>
+
                     </div>
                   </div>
                 </div>
